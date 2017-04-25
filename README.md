@@ -3,7 +3,7 @@
 1. レポジトリのクローン
 
 ```
-$ git clone https://github.com/furukawa-ai/deeplearning_papers.git
+$ git clone 
 ```
 
 2. ローカル編集前に必ず以下のコマンドで最新に反映すること。
