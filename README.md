@@ -84,6 +84,7 @@ $ sudo python setup.py install
 ```
 # pipを最新版にアップデート
 $ sudo pip install --ignore-installed pip
+$ cd ~/git/gym (gymをCloneしたディレクトリ)
 # Install gym Box2D env
 $ sudo pip install -e '.[box2d]'
 ```
