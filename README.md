@@ -56,7 +56,7 @@ $ python train_dqn_gym.py --env CartPole-v0 --gpu -1 --demo --monitor --load dqn
   
 4.6. Train CartPole by DQN with prioritized replay and episodic replay
   
-計算時間の目安: 100,000[steps]/(1,000[steps]/75[sec])=2.1[hours]
+計算時間の目安: 100,000[steps]/(1,000[steps]/38[sec])=1[hours]
 ```
 $ python train_dqn_gym.py --env CartPole-v0 --gpu -1 --steps 100000 --prioritized-replay --episodic-replay
 ```
