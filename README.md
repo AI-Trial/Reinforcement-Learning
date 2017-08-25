@@ -20,13 +20,15 @@ $ git commit -m "<message>"
 $ git push origin master
 ```
 4. Chainer RLのサンプルを動かす方法
-
+4.0. 依存ライブラリのインストール
+```
+sudo apt-get install -y python-numpy python-dev cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev python-opengl libboost-all-dev libsdl2-dev swig
+```
 4.1. Install gym
 ```
 $ git clone https://github.com/openai/gym.git
 $ cd gym
 $ sudo pip install -e .
-$ sudo pip install gym[all]
 ```
 
 4.2. Clone ChainerRL
