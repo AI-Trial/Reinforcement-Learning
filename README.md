@@ -61,7 +61,7 @@ $ python train_dqn_gym.py --env CartPole-v0 --gpu -1 --demo --monitor --load dqn
 5. Box2DでBipedalWalkerを動かす
   
 5.0. スタックしやすいところ  
-Ubuntu 14.04のpipではswig2.0が入ってきますが、Box2Dはswig>3.0が必要です。  
+Ubuntu 14.04のpipではswig2.0が入ってきますが、Box2Dはswig>3.0が必要です。  
 参考： https://www.bountysource.com/issues/34260638-box2d-won-t-find-some-rand_limit_swigconstant
   
 5.1. Install swig > 3.0
@@ -84,6 +84,7 @@ $ sudo python setup.py install
 ```
 # pipを最新版にアップデート
 $ sudo pip install --ignore-installed pip
+# Install gym Box2D env
 $ sudo pip install -e '.[box2d]'
 ```
 5.4. Train BipedalWalker by DQN
