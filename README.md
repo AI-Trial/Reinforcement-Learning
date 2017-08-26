@@ -103,6 +103,7 @@ $ python train_dqn_gym.py --env BipedalWalker-v2 --gpu -1 --demo --monitor --loa
 ```
 5.6. Train BipedalWalker by LSTM A3C
 ```
-$ python train_a3c_gym.py 8 --env BipedalWalker-v2 --arch LSTMGaussian --outdir a3c_out --steps 1000000
-$ python train_a3c_gym.py 8 --env BipedalWalker-v2 --arch LSTMGaussian --outdir a3c_out --render --demo --monitor --load a3c_out/保存ディレクトリ名/80000000_finish
+# 計算時間の目安: 10,000,000[steps]/10[steps/sec]/8[processes]=35[hours]
+$ python train_a3c_gym.py 8 --env BipedalWalker-v2 --arch LSTMGaussian --outdir a3c_out --steps 10000000
+$ python train_a3c_gym.py 8 --env BipedalWalker-v2 --arch LSTMGaussian --outdir a3c_out --render --demo --monitor --load a3c_out/保存ディレクトリ名/10000000_finish
 ```
