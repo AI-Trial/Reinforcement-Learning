@@ -103,6 +103,6 @@ $ python train_dqn_gym.py --env BipedalWalker-v2 --gpu -1 --demo --monitor --loa
 ```
 5.6. Train BipedalWalker by LSTM A3C
 ```
-$ python train_a3c_gym.py 8 --env BipedalWalker-v2 --arch LSTMGaussian --outdir a3c_out
+$ python train_a3c_gym.py 8 --env BipedalWalker-v2 --arch LSTMGaussian --outdir a3c_out --steps 1000000
 $ python train_a3c_gym.py 8 --env BipedalWalker-v2 --arch LSTMGaussian --outdir a3c_out --render --demo --monitor --load a3c_out/保存ディレクトリ名/80000000_finish
 ```
