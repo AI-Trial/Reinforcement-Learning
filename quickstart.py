@@ -37,7 +37,7 @@ class QFunction(chainer.Chain): # chainer.Chainクラスを継承してQ関数�
         # input xを入力した際のネットワーク出力(action)を返す関数
         h = F.tanh(self.l0(x)) # input layer 出力。活性化関数tanh
         h = F.tanh(self.l1(h)) # hidden layer 出力。活性化関数tanh
-        # output layer 出力からactionを生成するインスタンスを返す
+        # output layer 出力からactionを生成
         return chainerrl.action_value.DiscreteActionValue(self.l2(h))
 
 obs_size = env.observation_space.shape[0] # observation spaceのサイズ(4)
@@ -45,7 +45,7 @@ n_actions = env.action_space.n # action spaceのサイズ(2)
 q_func = QFunction(obs_size, n_actions) # Q関数インスタンスを作成
 
 optimizer = chainer.optimizers.Adam(eps=1e-2) # Adam optimizerを作成。ε=0.01
-optimizer.setup(q_func) # Q関数へのリンクを設定
+optimizer.setup(q_func) # Optimize Q function by Adam
 
 gamma = 0.95 # 割引率
 
@@ -58,8 +58,7 @@ replay_buffer = chainerrl.replay_buffer.ReplayBuffer(capacity=10 ** 6)
 
 # CartPole-v0 の observation space は numpy.float64
 # Chainerはデフォルトでnumpy.float32しか扱えないので変換が必要
-# ChainerRLのAgentは引数でfeature extractor functionを定義できるので、
-# float64 -> float32に変換するだけの関数φを作成
+# float64 -> float32に変換するだけの関数φ
 phi = lambda x: x.astype(np.float32, copy=False)
 
 # agentを作成, Double DQNを使用
@@ -83,7 +82,7 @@ for i in range(1, n_episodes + 1):
         action = agent.act_and_train(obs, reward) # 現在の状態(st)からaction(at)生成
         # この時、遷移(st-1, at-1, rt-1, st)をReply Memoryに保存
         # さらに、ランダムに遷移のミニバッチをサンプルしてQ-network更新
-        obs, reward, done, _ = env.step(action) # 生成したactionを実行
+        obs, reward, done, _ = env.step(action) # 生成したaction(at)を実行
         R += reward # 収益更新
         t += 1 # timestep更新
     if i % 10 == 0: # ログ表示
