@@ -93,6 +93,17 @@ for i in range(1, n_episodes + 1):
               'statistics:', agent.get_statistics())
     agent.stop_episode_and_train(obs, reward, done) # Q-network更新
 
+'''
+ソースコードは読んでいないので書き振りからの推測ですが、
+Replay Memoryは
+s = {s0, s1, s2, ...}
+a = {a0, a1, a2, ...}
+r = { 0, r0, r1, ...}
+みたいなデータ構造になっていて、
+ランダムに{st, at, rt, st+1}を選択して
+学習に使っていると思われます。
+'''
+
 print('Finished.')
 
 # 保存
