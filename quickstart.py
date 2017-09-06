@@ -79,9 +79,8 @@ for i in range(1, n_episodes + 1):
     t = 0  # timestep初期化
     while not done and t < max_episode_len:
         env.render() # 画面表示
-        action = agent.act_and_train(obs, reward) # 現在の状態(st)からaction(at)生成
-        # この時、遷移(st-1, at-1, rt-1, st)をReply Memoryに保存
-        # さらに、ランダムに遷移のミニバッチをサンプルしてQ-network更新
+        # 現在の状態(s)からaction(a)を生成し、(s,a,r)をReply Memoryに保存
+        action = agent.act_and_train(obs, reward)
         obs, reward, done, _ = env.step(action) # 生成したaction(at)を実行
         R += reward # 収益更新
         t += 1 # timestep更新
