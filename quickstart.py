@@ -71,12 +71,13 @@ agent = chainerrl.agents.DoubleDQN(
 
 n_episodes = 200 # 学習するEpisode数=200
 max_episode_len = 200 # 1 Episodeあたりの最大timestep
+
 for i in range(1, n_episodes + 1):
-obs = env.reset() # 環境の初期化
-reward = 0 # 報酬(reward)の初期化
-done = False
-R = 0  # 収益(return)の初期化
-t = 0  # timestep初期化
+    obs = env.reset() # 環境の初期化
+    reward = 0 # 報酬(reward)の初期化
+    done = False
+    R = 0  # 収益(return)の初期化
+    t = 0  # timestep初期化
     while not done and t < max_episode_len:
         env.render() # 画面表示
         action = agent.act_and_train(obs, reward) # 現在の状態(st)からaction(at)生成
@@ -90,6 +91,7 @@ t = 0  # timestep初期化
               'R:', R,
               'statistics:', agent.get_statistics())
     agent.stop_episode_and_train(obs, reward, done) # Q-network更新
+
 print('Finished.')
 
 # 保存
