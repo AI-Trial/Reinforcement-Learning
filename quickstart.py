@@ -8,6 +8,8 @@ import gym
 import numpy as np
 
 env = gym.make('CartPole-v0') # CartPole-v0環境を作成
+# ここを自分で作った環境にすればオリジナルの環境で学習可能
+# 例えば、env=myturtlebot()とか。
 
 print('observation space:', env.observation_space) # observation space(stateの数)を確認
 # [position of cart, velocity of cart, angle of pole, rotation rate of pole] の4つ
@@ -23,7 +25,7 @@ obs, r, done, info = env.step(action) # actionを実行してtimestepを進め�
 
 print('next observation:', obs) # action実行後の状態
 print('reward:', r) # 報酬
-print('done:', done) # 終了フラグ。ポールが倒れる or Max timestep 到達で終了
+print('done:', done) # 終了フラグ。ポールが倒れたらdone
 print('info:', info) # その他の情報
 
 class QFunction(chainer.Chain): # chainer.Chainクラスを継承してQ関数クラスを定義
@@ -44,8 +46,9 @@ obs_size = env.observation_space.shape[0] # observation spaceのサイズ(4)
 n_actions = env.action_space.n # action spaceのサイズ(2)
 q_func = QFunction(obs_size, n_actions) # Q関数インスタンスを作成
 
-optimizer = chainer.optimizers.Adam(eps=1e-2) # Adam optimizerを作成。ε=0.01
-optimizer.setup(q_func) # Optimize Q function by Adam
+# Q関数をAdamで最適化。ε=0.01
+optimizer = chainer.optimizers.Adam(eps=1e-2)
+optimizer.setup(q_func)
 
 gamma = 0.95 # 割引率
 
