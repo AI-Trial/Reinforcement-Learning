@@ -1,0 +1,22 @@
+1. オリジナル論文
+  Generative Adversarial Imitation Learning
+  Jonathan Ho, Stefano Ermon @Stanford
+  https://arxiv.org/abs/1606.03476
+
+  Github
+  https://github.com/openai/imitation
+
+2. Discriminatorにactionを与えずに学習
+  Learning human behaviors from motion capture by adversarial imitation
+  Josh Merel, Yuval Tassa, Dhruva TB, Sriram Srinivasan, Jay Lemmon, Ziyu Wang, Greg Wayne, Nicolas Heess @DeepMind
+  https://arxiv.org/abs/1707.02201
+
+3. CNNあり
+  Third-Person Imitation Learning
+  Bradly C. Stadie, Pieter Abbeel, Ilya Sutskever @UCB
+  https://arxiv.org/abs/1703.01703
+
+  Github
+  https://github.com/bstadie/third_person_im
+  こちらの方がDocumentationが充実していて親切。CNN実装もあり。
+  The main modules use Theano as the underlying framework, and we have support for TensorFlow under sandbox/rocky/tf.
