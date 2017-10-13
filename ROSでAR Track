@@ -1,0 +1,43 @@
+0. 下準備
+  カメラキャリブレーションにIntel Math Kernel Library (MKL)を使用しているので、予めインストールしておく。
+
+1. カメラキャリブレーション
+  参考
+    http://wiki.ros.org/camera_calibration
+  1.1. カメラキャリブレーションツールのインストール
+    $ sudo apt-get install ros-indigo-camera-calibration
+  1.2. キャリブレーション用のチェックボードを印刷
+    http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration?action=AttachFile&do=view&target=check-108.pdf
+  1.3. camera_calibrationを実行
+    $ roscore
+    $ rosrun uvc_camera uvc_camera_node _device:=/dev/video0
+    $ rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.0248 image:=/image_raw
+    上記チェックボードは108mm角だが、レターに印刷した場合、23%になるので約24.8mm角(0.0248)
+    カメラの前でチェックボードを動かす → Calibrate → Save
+  1.4. キャリブレーションファイル作成
+    キャリブレーションデータは/tmp/calibrationdata.tar.gzにある。適当な場所に展開。
+    $ cd calibrationdata
+    ost.txtがキャリブレーション結果。camera-calibration-parsersを使ってymlファイルに変換。
+    $ sudo apt-get install ros-indigo-camera-calibration-parsers
+    $ cp ost.txt ost.ini
+    $ rosrun camera_calibration_parsers convert ost.ini cal.yml
+
+2. ar-track-alvar を使う。
+  2.1. インストール
+    $ sudo apt-get install ros-indigo-ar-track-alvar
+  2.2. ARタグの印刷
+    http://wiki.ros.org/ar_track_alvar?action=AttachFile&do=view&target=markers0to8.png
+  2.3. Launchファイルの作成
+    参考
+      http://wikiwiki.jp/naonaorange/?ROS%2FPackage%2Far_track_alvar
+      http://ishi.main.jp/ros/ros_ar_indiv.html
+    ar_track.launchなど適当な名前で保存
+    camera_info_urlではキャリブレーションファイルの絶対パスを指定
+      <param name="camera_info_url" type="string" value="file:///home/ryo/calibrationdata/Logitec4kBrio/cal.yml" />
+    marker_size でマーカのサイズ指定。印刷設定などで変わるので注意。
+      <arg name="marker_size" default="5.5" />
+  2.4. Launch
+    $ roslaunch ar_track.launch
+  2.5. rvizで可視化
+    $ rosrun rviz rviz
+    Add → TFで座標を表示、Add → Cameraでカメラの映像と重畳して表示
