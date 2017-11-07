@@ -22,3 +22,11 @@ done = False
 while not done:
     obs, reward, done, info = env.step(action)
 みたいな感じで普通のgym環境っぽく使えます。
+
+observation space (6 dim):
+    robot position (x, y, angle)
+    box position (x, y, angle)
+
+action space (2 dim):
+    velocity
+    angular velocity
