@@ -2,7 +2,7 @@ gym-turtlebotインストール方法
 
 1. turtlebot.pyを　gym/gym/envs/turtlebot　に置く。
 
-2. gym/gym/envs/__init__.py　を作成し以下の行を追記
+2. gym/gym/envs/turtlebot/__init__.py　を作成し以下の行を追記
 
 from gym.envs.turtlebot.turtlebot import TurtlebotEnv
 
