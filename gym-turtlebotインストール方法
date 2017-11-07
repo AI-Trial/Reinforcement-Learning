@@ -1,0 +1,16 @@
+gym-turtlebotインストール方法
+
+1. turtlebot.pyを　gym/gym/envs/turtlebot　に置く。
+
+2. gym/gym/envs/__init__.py　を作成し以下の行を追記
+
+from gym.envs.turtlebot.turtlebot import TurtlebotEnv
+
+3. gym/gym/envs/__init__.py　に以下の行を追加
+
+# Turtlebot
+register(
+    id='Turtlebot-v0',
+    entry_point='gym.envs.turtlebot.turtlebot:TurtlebotEnv',
+    max_episode_steps=200,
+)
