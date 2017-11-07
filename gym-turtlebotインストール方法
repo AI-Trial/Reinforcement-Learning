@@ -14,3 +14,11 @@ register(
     entry_point='gym.envs.turtlebot.turtlebot:TurtlebotEnv',
     max_episode_steps=200,
 )
+
+使い方
+env = gym.make('Turtlebot-v0')
+obs = env.reset()
+done = False
+while not done:
+    obs, reward, done, info = env.step(action)
+みたいな感じで普通のgym環境っぽく使えます。
