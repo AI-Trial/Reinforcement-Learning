@@ -41,3 +41,6 @@
   2.5. rvizで可視化
     $ rosrun rviz rviz
     Add → TFで座標を表示、Add → Cameraでカメラの映像と重畳して表示
+
+xtionの場合
+http://wiki.ros.org/openni_launch/Tutorials/IntrinsicCalibration
