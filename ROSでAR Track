@@ -44,3 +44,7 @@
 
 xtionの場合
 http://wiki.ros.org/openni_launch/Tutorials/IntrinsicCalibration
+
+2017年11月9日
+　廣瀬のノートPCにてKinectのカメラキャリブレーションを終了（RGB＋IR）
+  lanch file /home/hirose/Documents/catkin_ws/src/openni_launch/launch/my_xtion.launch 
